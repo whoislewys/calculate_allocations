@@ -3,7 +3,9 @@ Quick script to calculate allocation amounts in $ and shares to "Lily's Forever 
 See Composer Trade breakdown here: https://app.composer.trade/symphony/Vqo3Taxh3mEwpYjIEX95/details
 
 Usage:
-`python3 allocate_to_lilys_forever-portfolio.py 10000`
+```
+python3 calc_allocations_to_lilys_forever_portfolio.py 10000
+```
 
 Note: This is intended to be rebalanced yearly
 """
@@ -25,7 +27,7 @@ xlp_weight = 16.67
 xlv_weight = 25
 xlk_weight = 25
 tlt_weight = 16.67
-gld_weight = 16.66
+gldm_weight = 16.66
 
 # Fetch the latest share prices
 xlp_ticker = yf.Ticker("XLP")
@@ -41,8 +43,8 @@ xlk_latest_price = xlk_ticker.history(period="1d").iloc[-1]["Close"]
 tlt_ticker = yf.Ticker("TLT")
 tlt_latest_price = tlt_ticker.history(period="1d").iloc[-1]["Close"]
 
-gld_ticker = yf.Ticker("GLD")
-gld_latest_price = gld_ticker.history(period="1d").iloc[-1]["Close"]
+gldm_ticker = yf.Ticker("GLDM")
+gldm_latest_price = gldm_ticker.history(period="1d").iloc[-1]["Close"]
 
 # Calculate the number of shares for each asset
 amounts_to_allocate = {
@@ -62,9 +64,9 @@ amounts_to_allocate = {
         "dollars": amount_to_allocate * tlt_weight / 100,
         "shares": (amount_to_allocate * tlt_weight / 100) / tlt_latest_price,
     },
-    "GLD": {
-        "dollars": amount_to_allocate * gld_weight / 100,
-        "shares": (amount_to_allocate * gld_weight / 100) / gld_latest_price,
+    "GLDM": {
+        "dollars": amount_to_allocate * gldm_weight / 100,
+        "shares": (amount_to_allocate * gldm_weight / 100) / gldm_latest_price,
     },
 }
 

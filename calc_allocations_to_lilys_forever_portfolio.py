@@ -32,7 +32,7 @@ gldm_weight = 16.66
 # Fetch the latest share prices
 xlp_ticker = yf.Ticker("XLP")
 xlp_latest_price = xlp_ticker.history(period="1d").iloc[-1]["Close"]
-print('xlp_latest_price', xlp_latest_price)
+# print('xlp_latest_price', xlp_latest_price)
 
 xlv_ticker = yf.Ticker("XLV")
 xlv_latest_price = xlv_ticker.history(period="1d").iloc[-1]["Close"]
@@ -49,22 +49,27 @@ gldm_latest_price = gldm_ticker.history(period="1d").iloc[-1]["Close"]
 # Calculate the number of shares for each asset
 amounts_to_allocate = {
     "XLP": {
+        "latest price": xlp_latest_price,
         "dollars": amount_to_allocate * xlp_weight / 100,
         "shares": (amount_to_allocate * xlp_weight / 100) / xlp_latest_price,
     },
     "XLV": {
+        "latest price": xlv_latest_price,
         "dollars": amount_to_allocate * xlv_weight / 100,
         "shares": (amount_to_allocate * xlv_weight / 100) / xlv_latest_price,
     },
     "XLK": {
+        "latest price": xlk_latest_price,
         "dollars": amount_to_allocate * xlk_weight / 100,
         "shares": (amount_to_allocate * xlk_weight / 100) / xlk_latest_price,
     },
     "TLT": {
+        "latest price": tlt_latest_price,
         "dollars": amount_to_allocate * tlt_weight / 100,
         "shares": (amount_to_allocate * tlt_weight / 100) / tlt_latest_price,
     },
     "GLDM": {
+        "latest price": gldm_latest_price,
         "dollars": amount_to_allocate * gldm_weight / 100,
         "shares": (amount_to_allocate * gldm_weight / 100) / gldm_latest_price,
     },

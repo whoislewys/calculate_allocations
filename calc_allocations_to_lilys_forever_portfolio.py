@@ -31,20 +31,20 @@ gldm_weight = 16.66
 
 # Fetch the latest share prices
 xlp_ticker = yf.Ticker("XLP")
-xlp_latest_price = xlp_ticker.history(period="1d").iloc[-1]["Close"]
+xlp_latest_price = xlp_ticker.history(period="1d", interval='1m').iloc[-1]["Close"]
 # print('xlp_latest_price', xlp_latest_price)
 
 xlv_ticker = yf.Ticker("XLV")
-xlv_latest_price = xlv_ticker.history(period="1d").iloc[-1]["Close"]
+xlv_latest_price = xlv_ticker.history(period="1d", interval='1m').iloc[-1]["Close"]
 
 xlk_ticker = yf.Ticker("XLK")
-xlk_latest_price = xlk_ticker.history(period="1d").iloc[-1]["Close"]
+xlk_latest_price = xlk_ticker.history(period="1d", interval='1m').iloc[-1]["Close"]
 
 tlt_ticker = yf.Ticker("TLT")
-tlt_latest_price = tlt_ticker.history(period="1d").iloc[-1]["Close"]
+tlt_latest_price = tlt_ticker.history(period="1d", interval='1m').iloc[-1]["Close"]
 
 gldm_ticker = yf.Ticker("GLDM")
-gldm_latest_price = gldm_ticker.history(period="1d").iloc[-1]["Close"]
+gldm_latest_price = gldm_ticker.history(period="1d", interval='1m').iloc[-1]["Close"]
 
 # Calculate the number of shares for each asset
 amounts_to_allocate = {
